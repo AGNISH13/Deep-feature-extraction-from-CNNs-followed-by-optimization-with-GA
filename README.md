@@ -37,7 +37,7 @@ No. of Epochs: `5`, No. of Generations: `10`
 ## Flow diagram of the Genetic Algorithm
 
 
-![image](https://user-images.githubusercontent.com/84792746/154851819-2df7036d-e2a4-48c4-8e60-e853f278322e.png)
+![image](https://user-images.githubusercontent.com/84792746/154852688-200dd978-ec4a-47c1-b073-0d3249e3d89c.png)
 
 
 ## Dependencies
