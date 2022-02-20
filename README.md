@@ -37,6 +37,9 @@ No. of Epochs: `5`, No. of Generations: `10`
 ## Flow diagram of the Genetic Algorithm
 
 
+![image](https://user-images.githubusercontent.com/84792746/154851819-2df7036d-e2a4-48c4-8e60-e853f278322e.png)
+
+
 ## Dependencies
 Since the entire project is based on `Python` programming language, it is necessary to have Python installed in the system. It is recommended to use Python with version `>=3.6`.
 The Python packages which are in use in this project are  `matplotlib`, `numpy`, `pandas`, `scikit-learn`, `torch` and `torchvision`. All these dependencies can be installed just by the following command line argument
@@ -44,45 +47,56 @@ The Python packages which are in use in this project are  `matplotlib`, `numpy`,
 
 ## Code implementation
 - ### Data paths :
-      Current directory ----> Data_Folder
+      Current directory -------> data
                                   |
                                   |
                                   |               
-                                  ------------------>  train
-                                  |                      |
-                                  |             --------------------
-                                  |             |        |         |
-                                  |             V        V         V
-                                  |           lung_n  lung_aca  lung_scc
+                                  --------------------->  train
+                                  |                         |
+                                  |             -------------------------
+                                  |             |        |              |
+                                  |             V        V              V
+                                  |           class_1  class_2 ...... class_n
                                   |
                                   |
                                   |              
-                                  ------------------>   val
-                                                         |
-                                                --------------------
-                                                |        |         |
-                                                V        V         V
-                                              lung_n  lung_aca  lung_scc
+                                  --------------------->   val
+                                                            |
+                                                -------------------------
+                                                |        |              |
+                                                V        V              V
+                                              class_1  class_2 ...... class_n
                                               
                                
-- Where the folders `train` and `val` contain the folders `lung_n`, `lung_aca`and `lung_scc`, which include the original histopathological images of respective type of lung carcinoma in `.jpg`/`.png` format.
-- `Note:` The folders `lung_n`, `lung_aca`and `lung_scc` contain the histopathological images of 'Benign', 'Adenocarcinoma' and 'Squamous cell carcinoma' samples respectively.
+- Where the folders `train` and `val` contain the folders `benign` and `malignant`, which include the original histopathological images of respective type of human breast tumor tissue in `.jpg`/`.png` format.
 
 - ### Training and Evaluation :
-      -help
 
-      optional arguments:
-        -h, --help            show this help message and exit
-        -data DATA_FOLDER, --data_folder DATA_FOLDER
-        -cnn CNN_TYPE, --CNN_type CNN_TYPE
+          usage: main.py [-h] [-data DATA_FOLDER] [-classes NUM_CLASSES]
+                         [-ext EXTRACTOR_TYPE] [-classif CLASSIFIER_TYPE]
+
+          Application of Genetic Algorithm
+
+          optional arguments:
+            -h, --help            show this help message and exit
+            -data DATA_FOLDER, --data_folder DATA_FOLDER
+                                  Path to data
+            -classes NUM_CLASSES, --num_classes NUM_CLASSES
+                                  Number of data classes
+            -ext EXTRACTOR_TYPE, --extractor_type EXTRACTOR_TYPE
+                                  Choice of deep feature extractor
+            -classif CLASSIFIER_TYPE, --classifier_type CLASSIFIER_TYPE
+                                  Choice of classifier for GA
         
 -  ### Run the following for training and validation :
   
-      `python main.py -data Data_Folder -cnn vgg16`
+      `python main.py -data data -classes n -ext resnet -classif KNN`
       
 -  ### Specific tokens :
 
           GoogLeNet: 'googlenet'
-          VGG-16: 'vgg16'
-          ResNet-18: 'resnet18'
-          DenseNet-121: 'densenet121'
+          ResNet-18: 'resnet'
+          VGG-19: 'vgg16'
+          SVM Classifier: 'SVM'
+          KNN Classifier: 'KNN'
+          MLP Classifier: 'MLP'
